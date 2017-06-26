@@ -3,4 +3,6 @@
     <dimen name="item_padding">5dp</dimen>
     <dimen name="left_margin">50dp</dimen>
     <dimen name="top_margin">10dp</dimen>
+    <dimen name="elevation">10dp</dimen>
+    <dimen name="card_padding">5dp</dimen>
 </resources>
