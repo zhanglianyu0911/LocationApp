@@ -121,7 +121,7 @@ public class DetailActivity extends AppCompatActivity implements OnMapReadyCallb
 
     }
 
-
+    // load data from google direct API
     @Nullable
     private Map getRoutineInfo() throws IOException, JSONException {
 
