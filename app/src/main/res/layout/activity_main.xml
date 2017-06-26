@@ -10,13 +10,6 @@
             android:theme="@style/ActionBarTheme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-        <ProgressBar
-            android:indeterminate="true"
-            android:id="@+id/progress"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:progressDrawable="@drawable/progress_icon"
-            android:layout_gravity="center_horizontal"/>
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_list"

@@ -22,11 +22,9 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.zhang.productapp.R;
@@ -60,20 +58,13 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private final String TAG = "MainActivity";
-    private final String LIST_ORDER_STATE = "LIST_ORDER_STATE";
-    private final String LIST_POSITION_STATE = "LIST_STATE";
     private List<LocationModel> productList;
     private ApiInterface apiInterface;
     private RecyclerView.LayoutManager mLayoutManager;
-    private Parcelable mListState;
     private LocationManager manager;
     private LocationManager locationManager;
     private LocationListener listener;
-    private Parcelable listState;
-    private ArrayList<LocationModel> newArr;
 
-    @BindView(R.id.progress) ProgressBar mProgressBar;
     @BindView(R.id.recycler_list) RecyclerView recyclerView;
     @BindView(R.id.main_toolbar) Toolbar mToolbar;
 
@@ -103,7 +94,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void loadData() {
-
         apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
         Call<List<LocationModel>> call = apiInterface.getProductData();
 
@@ -121,8 +111,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-        mProgressBar.setVisibility(mProgressBar.GONE);
-
     }
 
     public double getDistance(double lat1,double long1, double lat2, double long2) {
@@ -161,7 +149,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.sort_arrive_time:
                 Collections.sort(productList, new DateComparator());
                 mAdapter.notifyDataSetChanged();
-                newArr = (ArrayList<LocationModel>) productList;
                 return true;
             case R.id.sort_distance:
                 final LocationManager manager = (LocationManager) getSystemService( Context.LOCATION_SERVICE );
@@ -240,26 +227,6 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
         locationManager.requestLocationUpdates("gps", 5000, 0, listener);
-    }
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        mListState = recyclerView.getLayoutManager().onSaveInstanceState();
-
-        outState.putParcelable(LIST_POSITION_STATE, mListState);
-        outState.putParcelableArrayList(LIST_ORDER_STATE, newArr);
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle state) {
-
-        if(state instanceof Bundle){
-            Log.e("restore", "save");
-            mListState = state.getParcelable(LIST_POSITION_STATE);
-        } else {
-            Log.e("restore", "not save");
-        }
-        super.onRestoreInstanceState(state);
     }
 
 // Re-write comparator for sorting
