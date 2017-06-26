@@ -1,0 +1,115 @@
+<LinearLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_detail"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="2">
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/map"
+            android:layout_weight="1"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="350dp"
+            android:layout_height="300dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            tools:context="com.example.zhang.productapp.ui.DetailActivity" />
+
+        <RelativeLayout
+            android:padding="@dimen/item_padding"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_width="350dp"
+            android:layout_marginTop="30dp">
+
+            <TextView
+                android:id="@+id/arrival_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Arrival Time: "/>
+
+            <TextView
+                android:id="@+id/arrival_time_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/arrival_time" />
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_marginTop="10dp"
+                android:layout_below="@+id/arrival_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Location: "/>
+
+            <TextView
+                android:id="@+id/location_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/top_margin"
+                android:layout_toRightOf="@+id/location"
+                android:layout_below="@id/arrival_time_value" />
+
+            <TextView
+                android:id="@+id/address_map"
+                android:layout_marginTop="@dimen/top_margin"
+                android:layout_below="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Address: "/>
+
+            <TextView
+                android:id="@+id/addrss_map_value"
+                android:layout_marginTop="@dimen/top_margin"
+                android:layout_toRightOf="@+id/address_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/location_detail" />
+
+            <TextView
+                android:id="@+id/latitude_map"
+                android:layout_marginTop="@dimen/top_margin"
+                android:layout_below="@+id/address_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Latitude: "/>
+
+            <TextView
+                android:id="@+id/latitude_map_value"
+                android:layout_marginTop="@dimen/top_margin"
+                android:layout_toRightOf="@+id/address_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/address_map" />
+
+            <TextView
+                android:id="@+id/longitude_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/top_margin"
+                android:layout_below="@id/address_map"
+                android:layout_marginLeft="180dp"
+                android:text="Longitude: "/>
+            <TextView
+                android:id="@+id/longitude_map_value"
+                android:layout_marginTop="@dimen/top_margin"
+                android:layout_marginLeft="250dp"
+                android:layout_below="@+id/address_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

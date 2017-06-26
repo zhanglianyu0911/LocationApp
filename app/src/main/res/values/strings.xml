@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">LocationApp</string>
+    <string name="title_activity_detail">Location Details</string>
+    <string name="parcelable_key">data</string>
+    <string name="current_lat">currentLat</string>
+    <string name="current_lng">currentLng</string>
+</resources>
